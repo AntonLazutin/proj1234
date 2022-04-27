@@ -33,10 +33,3 @@ def data_view(request):
     data = DataModel.objects.all().order_by()
     print(data)
     return render(request, 'data.html', {'all_data': data})
-
-# class Index:
-#
-#
-#     def get_request(self, request):
-#         pass
-#     def post_request(self):
