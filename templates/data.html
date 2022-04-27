@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All sumbitted data</h1>
+    {% for data in all_data %}
+        {{ data.data }}
+        <br>
+        <br>
+    {% endfor %}
+{% endblock content %}

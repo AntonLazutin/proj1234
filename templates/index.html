@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post" id="form-id">
+        {% csrf_token %}
+        <div id="form-list">
+            {% if formset %}
+                <table id="table-form">
+                    {{ formset }}
+                </table>
+            {% endif %}
+        </div>
+        <br>
+        <button type="submit" value="smbt" class="btn btn-success" id="post-id">Sumbit</button>
+        <button type="button" class="btn btn-primary" onclick="add_more_fields()">Add field</button>
+    </form>
+    <script>
+        let changed = false;
+        function add_more_fields() {
+            changed = true;
+            if (changed === true){
+            document.getElementById('post-id').innerText = "Update fields";
+            }
+            let emptyFormElem = document.getElementById('table-form').getElementsByTagName('tbody')[0].cloneNode(true);
+            let destination = document.getElementById('table-form');
+            destination.append(emptyFormElem.rows[0]);
+            let formCount = parseInt(document.getElementById('id_form-TOTAL_FORMS').value)
+            formCount++;
+            document.getElementById("id_form-TOTAL_FORMS").setAttribute('value', (formCount.toString()));
+        }
+
+        if (changed === true){
+            document.getElementById('post-id').innerText = "Update fields";
+        }
+    </script>
+{% endblock %}
